@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TrackerUI.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -84,9 +87,6 @@
     <EmbeddedResource Include="CreateTeamForm.resx">
       <DependentUpon>CreateTeamForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateTournamentForm.dje-NE.resx">
-      <DependentUpon>CreateTournamentForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CreateTournamentForm.resx">
       <DependentUpon>CreateTournamentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,9 +101,6 @@
     </Compile>
     <EmbeddedResource Include="TournamentDashboardForm.resx">
       <DependentUpon>TournamentDashboardForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TournamentViewerForm.dje-NE.resx">
-      <DependentUpon>TournamentViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TournamentViewerForm.resx">
       <DependentUpon>TournamentViewerForm.cs</DependentUpon>
