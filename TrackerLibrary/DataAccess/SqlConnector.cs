@@ -16,10 +16,13 @@ using TrackerLibrary.Models;
 namespace TrackerLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
+
+
     {
+        private const string db = "Tournaments";
         public PersonModel CreatePerson(PersonModel model)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             //Utilizamos la instrucción using para que la connecxion se cierre correctamente si o sí.
             //Lo malo es que hay que abrir la conexion cada vez
             {
@@ -48,7 +51,7 @@ namespace TrackerLibrary.DataAccess
         {
             //throw new NotImplementedException(); //El codigo lo compila, pero me tira una excepción de no implementado. Es sólo para que complie
 
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             //Utilizamos la instrucción using para que la connecxion se cierre correctamente si o sí.
             //Lo malo es que hay que abrir la conexion cada vez
             {
@@ -67,5 +70,15 @@ namespace TrackerLibrary.DataAccess
             }
         }
 
+        public List<PersonModel> GetPerson_All()
+        {
+            List<PersonModel> output;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+            return output;
+        }
     }
 }
+ 
