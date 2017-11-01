@@ -52,7 +52,25 @@ namespace TrackerLibrary.DataAccess.TextHelpers // No quiero que todas las clase
             }
             return output;
         }
-        public static void SaveToPrizeFile(this List<PrizeModel> models, string filename) //Extension method. Añade una funcionalidad a List<PrizeModel>
+        public static List<PersonModel> ConvertToPersonModels (this List<string> lines)
+        {
+            List<PersonModel> output = new List<PersonModel>();
+            foreach (string line in lines)  
+            {
+                string[] cols = line.Split(',');
+
+                PersonModel p = new PersonModel();
+                p.Id = int.Parse(cols[0]);
+                p.FirstName = cols[1];
+                p.Lastname = cols[2];
+                p.EmailAddress = cols[3];
+                p.CellPhoneNumber = cols[4];
+                output.Add(p);
+                
+            }
+            return output;
+        }
+        public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName) //Extension method. Añade una funcionalidad a List<PrizeModel>
         {
             List<string> lines = new List<string>();  
             foreach (PrizeModel p  in models)
@@ -60,7 +78,19 @@ namespace TrackerLibrary.DataAccess.TextHelpers // No quiero que todas las clase
                 lines.Add($"{p.Id},{p.PlaceNumber},{p.PlaceName},{p.PrizeAmount},{p.PrizePercentage}");
             }
 
-            File.WriteAllLines(filename.FullFilePath(), lines);
+            File.WriteAllLines(fileName.FullFilePath(), lines);
         }
+
+        public static void SaveToPeopleFile(this List<PersonModel> models, string fileName)
+        {
+            List<string> lines = new List<string>();
+            foreach (PersonModel p in models)
+            {
+                lines.Add($"{p.Id},{p.FirstName},{p.Lastname},{p.EmailAddress},{p.CellPhoneNumber}");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
+
     }
 }

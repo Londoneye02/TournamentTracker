@@ -114,7 +114,7 @@
             this.selectTeamMemberLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.selectTeamMemberLabel.Location = new System.Drawing.Point(34, 192);
             this.selectTeamMemberLabel.Name = "selectTeamMemberLabel";
-            this.selectTeamMemberLabel.Size = new System.Drawing.Size(215, 30);
+            this.selectTeamMemberLabel.Size = new System.Drawing.Size(213, 30);
             this.selectTeamMemberLabel.TabIndex = 18;
             this.selectTeamMemberLabel.Text = " Select Team Member";
             // 
@@ -151,6 +151,7 @@
             this.createMemberButton.TabIndex = 21;
             this.createMemberButton.Text = "Create Member";
             this.createMemberButton.UseVisualStyleBackColor = true;
+            this.createMemberButton.Click += new System.EventHandler(this.createMemberButton_Click);
             // 
             // cellphoneValue
             // 
