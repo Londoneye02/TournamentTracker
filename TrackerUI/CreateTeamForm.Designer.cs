@@ -53,7 +53,7 @@
             // 
             // teamNameValue
             // 
-            this.teamNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
+            this.teamNameValue.ForeColor = System.Drawing.Color.Black;
             this.teamNameValue.Location = new System.Drawing.Point(39, 116);
             this.teamNameValue.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.teamNameValue.Name = "teamNameValue";
@@ -264,6 +264,7 @@
             this.createTeamButton.TabIndex = 26;
             this.createTeamButton.Text = "Create Team";
             this.createTeamButton.UseVisualStyleBackColor = true;
+            this.createTeamButton.Click += new System.EventHandler(this.createTeamButton_Click);
             // 
             // CreateTeamForm
             // 
