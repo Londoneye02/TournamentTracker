@@ -234,28 +234,28 @@
   <data name="&gt;&gt;createPrizeButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="tournamentPlayersListBox.ItemHeight" type="System.Int32, mscorlib">
+  <data name="tournamentTeamsListBox.ItemHeight" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="tournamentPlayersListBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tournamentTeamsListBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>428, 131</value>
   </data>
-  <data name="tournamentPlayersListBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tournamentTeamsListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 152</value>
   </data>
-  <data name="tournamentPlayersListBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="tournamentTeamsListBox.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="&gt;&gt;tournamentPlayersListBox.Name" xml:space="preserve">
-    <value>tournamentPlayersListBox</value>
+  <data name="&gt;&gt;tournamentTeamsListBox.Name" xml:space="preserve">
+    <value>tournamentTeamsListBox</value>
   </data>
-  <data name="&gt;&gt;tournamentPlayersListBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;tournamentTeamsListBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tournamentPlayersListBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tournamentTeamsListBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tournamentPlayersListBox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tournamentTeamsListBox.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="tournamentsPlayersLabel.Font" type="System.Drawing.Font, System.Drawing">
@@ -373,7 +373,7 @@
     <value>23</value>
   </data>
   <data name="prizesLabel.Text" xml:space="preserve">
-    <value>Teams/Player</value>
+    <value>Prizes</value>
   </data>
   <data name="prizesLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -544,7 +544,7 @@
     <value>34, 255</value>
   </data>
   <data name="selectTeamLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 30</value>
+    <value>122, 30</value>
   </data>
   <data name="selectTeamLabel.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>

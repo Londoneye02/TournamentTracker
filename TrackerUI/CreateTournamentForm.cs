@@ -7,49 +7,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary;
+using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
     public partial class CreateTournamentForm : Form
     {
+
+        List<TeamModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
+        List<TeamModel> selectedTeams = new List<TeamModel>();
+        List<PrizeModel> selectedPrizes = new List<PrizeModel>();
         public CreateTournamentForm()
         {
             InitializeComponent();
+            WireUpList();
         }
 
-        private void selectTeamLabel_Click(object sender, EventArgs e)
+        private void WireUpList()
         {
+            selectTeamDropDown.DataSource = null;
+            tournamentTeamsListBox.DataSource = null;
+            prizesListBox.DataSource = null;
 
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
+            selectTeamDropDown.DataSource = availableTeams;
+            selectTeamDropDown.DisplayMember = "TeamName";
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            tournamentTeamsListBox.DataSource = selectedTeams;
+            tournamentTeamsListBox.DisplayMember = "TeamName";
 
-        }
-
-        private void CreateTournamentForm_Load(object sender, EventArgs e)
-        {
+            prizesListBox.DataSource = selectedPrizes;
+            prizesListBox.DisplayMember = "PlaceName";
 
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void addTeamButton_Click(object sender, EventArgs e)
         {
+            //PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem; //Casting. Convierte lo que hay en el dropdown en un personmodel (si falla, peta)
 
-        }
+            //if (p != null)
+            //{
+            //    availableTeamMembers.Remove(p);
+            //    selectedTeamMembers.Add(p);
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+            //    WireUpList();
+            //}
 
+            TeamModel t = (TeamModel)selectTeamDropDown.SelectedItem;
+            if (t != null)
+            {
+                availableTeams.Remove(t);
+                selectedTeams.Add(t);
+                WireUpList();
+            }
         }
     }
 }

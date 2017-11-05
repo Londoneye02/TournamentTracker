@@ -19,15 +19,15 @@ namespace TrackerUI
         public CreateTeamForm()
         {
             InitializeComponent();
-          
-           // CreateSampleData();
+
+            // CreateSampleData();
             WireUpList();
         }
 
 
         private void CreateSampleData()
         {
-            
+
             availableTeamMembers.Add(new PersonModel { FirstName = "Tim", Lastname = "Corey" });
             availableTeamMembers.Add(new PersonModel { FirstName = "Sue", Lastname = "Storm" });
 
@@ -62,7 +62,7 @@ namespace TrackerUI
                 firstNameValue.Text = "";
                 lastNameValue.Text = "";
                 emailValue.Text = "";
-                cellphoneValue.Text="";
+                cellphoneValue.Text = "";
             }
             else
             {
@@ -95,25 +95,25 @@ namespace TrackerUI
         {
             PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem; //Casting. Convierte lo que hay en el dropdown en un personmodel (si falla, peta)
 
-            if (p!=null)
+            if (p != null)
             {
                 availableTeamMembers.Remove(p);
                 selectedTeamMembers.Add(p);
 
-                WireUpList(); 
+                WireUpList();
             }
-          
+
         }
 
         private void removeSelectedMemberButton_Click(object sender, EventArgs e)
         {
             PersonModel p = (PersonModel)teamMembersListBox.SelectedItem;
-            if (p != null)      
+            if (p != null)
             {
                 selectedTeamMembers.Remove(p);
                 availableTeamMembers.Add(p);
 
-                WireUpList(); 
+                WireUpList();
             }
         }
 
@@ -124,7 +124,7 @@ namespace TrackerUI
             t.TeamName = teamNameValue.Text;
             t.TeamMembers = selectedTeamMembers;
 
-           t= GlobalConfig.Connection.CreateTeam(t);
+            t = GlobalConfig.Connection.CreateTeam(t);
             //TODO . If we arent closing this form after creation, reset the form.
         }
     }
