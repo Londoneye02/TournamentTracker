@@ -12,7 +12,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class CreateTournamentForm : Form
+    public partial class CreateTournamentForm : Form, IPrizeRequester, ITeamRequester
     {
 
         List<TeamModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
@@ -21,10 +21,10 @@ namespace TrackerUI
         public CreateTournamentForm()
         {
             InitializeComponent();
-            WireUpList();
+            WireUpLists();
         }
 
-        private void WireUpList()
+        private void WireUpLists()
         {
             selectTeamDropDown.DataSource = null;
             tournamentTeamsListBox.DataSource = null;
@@ -62,7 +62,60 @@ namespace TrackerUI
             {
                 availableTeams.Remove(t);
                 selectedTeams.Add(t);
-                WireUpList();
+                WireUpLists();
+            }
+        }
+
+        private void createPrizeButton_Click(object sender, EventArgs e)
+        {
+            //call the createprizeform
+            CreatePrizeForm frm = new CreatePrizeForm(this);
+            frm.Show();
+        }
+
+        public void PrizeComplete(PrizeModel model)
+        {
+
+            //get back from the form a prizemodel
+            //take the prizemodel and put it into our list of selected prizes
+            selectedPrizes.Add(model);
+            WireUpLists();
+
+        }
+
+        public void TeamComplete(TeamModel model)
+        {
+            selectedTeams.Add(model);
+            WireUpLists();
+        }
+
+        private void createTeamLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CreateTeamForm frm = new CreateTeamForm(this);
+
+            frm.Show();
+
+            
+        }
+
+        private void removeSelectedPlayersButton_Click(object sender, EventArgs e)
+        {
+            TeamModel t = (TeamModel)tournamentTeamsListBox.SelectedItem;
+            if (t!=null)
+            {
+                selectedTeams.Remove(t);
+                availableTeams.Add(t);
+                WireUpLists();
+            }
+        }
+
+        private void removeSelectedPrizesButton_Click(object sender, EventArgs e)
+        {
+            PrizeModel p = (PrizeModel)prizesListBox.SelectedItem;
+            if (p!=null)
+            {
+                selectedPrizes.Remove(p);
+                WireUpLists();
             }
         }
     }
