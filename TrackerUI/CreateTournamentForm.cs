@@ -30,10 +30,6 @@ namespace TrackerUI
             tournamentTeamsListBox.DataSource = null;
             prizesListBox.DataSource = null;
 
-
-
-
-
             selectTeamDropDown.DataSource = availableTeams;
             selectTeamDropDown.DisplayMember = "TeamName";
 
@@ -137,22 +133,20 @@ namespace TrackerUI
             }
 
             //Create our tournament model
-
             TournamentModel tm = new TournamentModel();
 
             tm.TournamentName = tournamentNameValue.Text;
-            tm.Entryfee = fee;
+            tm.EntryFee = fee;
 
             tm.Prizes = selectedPrizes;
             tm.EnteredTeams = selectedTeams;
 
+            //TODO Wire our matchups
 
-            
             //Create tournament entry
             //Create all of the prizes entries
             //Create all of team entries
-
-            //create our matchups
+            GlobalConfig.Connection.CreateTournament(tm);
 
         }
     }

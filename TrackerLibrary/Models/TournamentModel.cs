@@ -26,7 +26,7 @@ namespace TrackerLibrary.Models
         /// <summary>
         /// The amount of money each team needs to put up to enter;
         /// </summary>
-        public decimal Entryfee { get; set; }
+        public decimal EntryFee { get; set; }
         /// <summary>
         /// The set of teams that have been entered
         /// </summary>

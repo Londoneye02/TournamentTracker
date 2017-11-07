@@ -16,6 +16,7 @@ namespace TrackerLibrary.DataAccess
         private const string PrizesFile = "PrizeModels.csv";
         private const string PeopleFile = "PersonModels.csv";
         private const string TeamFile = "TeamModels.csv";
+        private const string TournamentFile = "TournamentModels.csv";
 
         public PersonModel CreatePerson(PersonModel model)
         {
@@ -86,7 +87,24 @@ namespace TrackerLibrary.DataAccess
           return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
         }
 
-        public TournamentModel CreateTournament(TournamentModel model)
+        public void CreateTournament(TournamentModel model)
+        {
+            List<TournamentModel> Tournaments = TournamentFile
+                .FullFilePath()
+                .LoadFile()
+                .ConvertToTournamentModels(TeamFile, PeopleFile,PrizesFile);
+
+            int currentId = 1;
+            if (Tournaments.Count > 0)
+            {
+                currentId = Tournaments.OrderByDescending(x => x.Id).First().Id + 1; //lo ordena por orden inverso de IDs y le añade 1
+            }
+            model.Id = currentId;
+            Tournaments.Add(model);
+            Tournaments.SaveToTournamentFile (TournamentFile);
+        }
+
+        TournamentModel IDataConnection.CreateTournament(TournamentModel model)
         {
             throw new NotImplementedException();
         }
