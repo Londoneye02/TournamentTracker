@@ -544,7 +544,7 @@
     <value>34, 255</value>
   </data>
   <data name="selectTeamLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 30</value>
+    <value>125, 30</value>
   </data>
   <data name="selectTeamLabel.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
