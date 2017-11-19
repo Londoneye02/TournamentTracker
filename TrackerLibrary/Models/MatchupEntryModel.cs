@@ -26,10 +26,10 @@ namespace TrackerLibrary.Models
         /// 
         /// </summary>
         /// <param name="initialscore"></param>
-        public MatchupEntryModel(double initialscore)
-        {
+        //public MatchupEntryModel(double initialscore)
+        //{
 
-        }
+        //}
 
     }
 

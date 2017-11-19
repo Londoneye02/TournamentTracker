@@ -90,8 +90,7 @@ namespace TrackerUI
             CreateTeamForm frm = new CreateTeamForm(this);
 
             frm.Show();
-
-            
+  
         }
 
         private void removeSelectedPlayersButton_Click(object sender, EventArgs e)
@@ -142,7 +141,8 @@ namespace TrackerUI
             tm.EnteredTeams = selectedTeams;
 
             //TODO Wire our matchups
-
+            TournamentLogic.CreateRounds(tm);
+    
             //Create tournament entry
             //Create all of the prizes entries
             //Create all of team entries
