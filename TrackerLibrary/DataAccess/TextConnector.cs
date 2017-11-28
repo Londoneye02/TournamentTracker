@@ -104,9 +104,6 @@ namespace TrackerLibrary.DataAccess
             Tournaments.SaveToTournamentFile (TournamentFile);
         }
 
-        TournamentModel IDataConnection.CreateTournament(TournamentModel model)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
