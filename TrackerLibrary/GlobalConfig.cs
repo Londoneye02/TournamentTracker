@@ -10,6 +10,13 @@ namespace TrackerLibrary
 {
     public static class GlobalConfig // Es visible desde cualquier sitio
     {
+        public const string PrizesFile = "PrizeModels.csv";
+        public const string PeopleFile = "PersonModels.csv";
+        public const string TeamFile = "TeamModels.csv";
+        public const string TournamentFile = "TournamentModels.csv";
+        public const string MatchupFile = "MatchupModels.csv";
+        public const string MatchupEntryFile = "MatchupEntryModels.csv";
+
         //Esta lista es de IDataconnection, que es una interfaz, y que puede albergar cualquier cosa que implemente el contrato de la interfazç
         //ya sea SQL, text, MySQL.... 
         public static IDataConnection Connection { get; private set; }

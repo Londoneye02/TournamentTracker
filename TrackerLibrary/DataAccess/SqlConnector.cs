@@ -93,7 +93,7 @@ namespace TrackerLibrary.DataAccess
             }
         }
 
-        public void   CreateTournament(TournamentModel model)
+        public void CreateTournament(TournamentModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -104,7 +104,7 @@ namespace TrackerLibrary.DataAccess
                 SaveTournamentEntries(connection, model);
 
                 SaveTournamentRounds(connection, model);
-                }
+            }
         }
         private void SaveTournament(IDbConnection connection, TournamentModel model)
         {
@@ -118,7 +118,7 @@ namespace TrackerLibrary.DataAccess
             model.Id = p.Get<int>("@id");
         }
 
-        private void SaveTournamentPrizes (IDbConnection connection, TournamentModel model)
+        private void SaveTournamentPrizes(IDbConnection connection, TournamentModel model)
         {
             foreach (PrizeModel pz in model.Prizes)
             {
@@ -142,7 +142,7 @@ namespace TrackerLibrary.DataAccess
             }
         }
 
-        private void SaveTournamentRounds (IDbConnection connection, TournamentModel model)
+        private void SaveTournamentRounds(IDbConnection connection, TournamentModel model)
         {
             //List<List<MatchupModels>> Rounds
             //List<MatchupEntryModel< Entries
@@ -152,7 +152,7 @@ namespace TrackerLibrary.DataAccess
             //Save the ma tchup
             //Loop through the entries and save them.
 
-            foreach (List<MatchupModel> round  in model.Rounds)
+            foreach (List<MatchupModel> round in model.Rounds)
             {
                 foreach (MatchupModel matchup in round)
                 {
@@ -166,14 +166,28 @@ namespace TrackerLibrary.DataAccess
                     matchup.Id = p.Get<int>("@id");
                     foreach (MatchupEntryModel entry in matchup.Entries)
                     {
-                         p = new DynamicParameters();
+                        p = new DynamicParameters();
 
                         //@MatchupId int,
                         //@ParentMatchupId int,
                         //@TeamCompetingId int,
                         p.Add("@MatchupId", matchup.Id);
-                        p.Add("@ParentMatchupId", entry.ParentMatchup);
-                        p.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+                        if (entry.ParentMatchup == null)
+                        {
+                            p.Add("@ParentMatchupId", null);
+                        }
+                        else
+                        {
+                            p.Add("@ParentMatchupId", entry.ParentMatchup.Id);
+                        }
+                        if (entry.TeamCompeting == null)
+                        {
+                            p.Add("@TeamCompetingId", null);
+                        }
+                        else
+                        {
+                            p.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+                        }
 
                         p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
